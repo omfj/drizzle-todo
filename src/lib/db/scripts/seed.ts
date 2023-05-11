@@ -27,7 +27,6 @@ async function main() {
       name: "Albania",
     },
     {
-      id: 3,
       name: "Sweden",
     },
   ]);
