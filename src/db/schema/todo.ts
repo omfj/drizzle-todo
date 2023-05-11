@@ -1,11 +1,17 @@
 import { InferModel } from "drizzle-orm";
-import { boolean, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import {
+  mysqlTable,
+  serial,
+  varchar,
+  boolean,
+  timestamp,
+} from "drizzle-orm/mysql-core";
 
-export const todo = pgTable("todo", {
+export const todo = mysqlTable("todo", {
   id: serial("id").primaryKey(),
-  title: text("full_name").notNull(),
-  body: text("title").notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  body: varchar("body", { length: 255 }).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   isDone: boolean("is_done").notNull().default(false),
 });

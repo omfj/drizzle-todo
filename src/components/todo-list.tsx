@@ -1,4 +1,4 @@
-import { Todo } from "@/lib/db/schema";
+import { Todo } from "@/db/schema/todo";
 import { TodoBox } from "./todo-box";
 
 export function TodoList({ todos }: { todos: Array<Todo> }) {

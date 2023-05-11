@@ -1,29 +1,22 @@
-import { CreateTodo } from "@/components/create-todo";
-import { TodoList } from "@/components/todo-list";
-import { db } from "@/lib/db/client";
-import { todo } from "@/lib/db/schema";
-import { desc } from "drizzle-orm";
+import Link from "next/link";
 
-export default async function Home() {
-  const startTime = Date.now();
-  const todos = await db.select().from(todo).orderBy(desc(todo.createdAt));
-  const endTime = Date.now();
-
-  const queryTime = ((endTime - startTime) / 1000).toFixed(3);
-
+export default function Home() {
   return (
     <main className="mx-auto my-10 max-w-2xl flex flex-col gap-10">
-      <h1 className="text-3xl font-medium text-center">Drizzle TODO Example</h1>
+      <h1 className="text-3xl font-medium text-center">Drizzle examples</h1>
 
-      <p>
-        Query took: <span className="font-bold">{queryTime}s</span>
-      </p>
-
-      <CreateTodo />
-
-      <hr />
-
-      <TodoList todos={todos} />
+      <ul className="flex text-center flex-col gap-4">
+        <li>
+          <Link className="hover:underline" href="/todo">
+            TODO
+          </Link>
+        </li>
+        <li>
+          <Link className="hover:underline" href="/countries">
+            Countries
+          </Link>
+        </li>
+      </ul>
     </main>
   );
 }

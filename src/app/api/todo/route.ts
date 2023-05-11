@@ -1,5 +1,5 @@
-import { db } from "@/lib/db/client";
-import { insertTodoSchema, todo } from "@/lib/db/schema";
+import { db } from "@/db/client";
+import { insertTodoSchema, todo } from "@/db/schema/todo";
 import { desc } from "drizzle-orm";
 import { NextResponse } from "next/server";
 

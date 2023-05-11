@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { insertTodoSchema } from "@/lib/db/schema";
+import { insertTodoSchema } from "@/db/schema/todo";
 import { z } from "zod";
 
 type FormValues = z.infer<typeof insertTodoSchema>;
