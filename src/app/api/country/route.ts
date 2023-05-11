@@ -1,15 +1,18 @@
 import { db } from "@/lib/db/client";
-import { insertTodoSchema, todo } from "@/lib/db/schemas/todo";
-import { desc } from "drizzle-orm";
+import { country, insertCountrySchema } from "@/lib/db/schemas/country";
+import { asc } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const todos = await db.select().from(todo).orderBy(desc(todo.createdAt));
+    const countries = await db
+      .select()
+      .from(country)
+      .orderBy(asc(country.name));
 
     return NextResponse.json(
       {
-        todos,
+        countries,
       },
       {
         status: 200,
@@ -32,13 +35,13 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const validatedBody = insertTodoSchema.parse(body);
+    const validatedBody = insertCountrySchema.parse(body);
 
-    await db.insert(todo).values(validatedBody);
+    await db.insert(country).values(validatedBody);
 
     return NextResponse.json(
       {
-        message: "Todo created successfully",
+        message: "Country created successfully",
       },
       {
         status: 201,

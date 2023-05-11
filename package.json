@@ -7,8 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:generate-migration": "drizzle-kit generate:pg --out src/lib/db/migrations --schema src/lib/db/schema.ts",
-    "db:migrate": "ts-node --skip-project src/lib/db/migrate"
+    "db:generate-migration": "drizzle-kit generate:pg",
+    "db:migrate": "tsx ./src/lib/db/scripts/migrate.ts",
+    "db:seed": "tsx ./src/lib/db/scripts/seed.ts",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
@@ -34,7 +37,7 @@
     "@tailwindcss/forms": "^0.5.3",
     "@types/pg": "^8.6.6",
     "drizzle-kit": "^0.17.6",
-    "ts-node": "^10.9.1",
+    "tsx": "^3.12.7",
     "typescript": "5.0.4"
   }
 }

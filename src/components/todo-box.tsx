@@ -1,6 +1,6 @@
 "use client";
 
-import { Todo } from "@/lib/db/schema";
+import { Todo } from "@/lib/db/schemas/todo";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
