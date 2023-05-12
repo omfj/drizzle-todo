@@ -6,11 +6,11 @@ CREATE TABLE `cities` (
 );
 
 CREATE TABLE `countries` (
-	`id` serial AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	`id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	`name` varchar(256)
 );
 
-CREATE TABLE `todo` (
+CREATE TABLE `todos` (
 	`id` serial AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	`title` varchar(255) NOT NULL,
 	`body` varchar(255) NOT NULL,

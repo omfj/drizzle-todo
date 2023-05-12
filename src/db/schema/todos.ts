@@ -8,7 +8,7 @@ import {
   timestamp,
 } from "drizzle-orm/mysql-core";
 
-export const todo = mysqlTable("todo", {
+export const todos = mysqlTable("todos", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
   body: varchar("body", { length: 255 }).notNull(),
@@ -16,6 +16,7 @@ export const todo = mysqlTable("todo", {
   isDone: boolean("is_done").notNull().default(false),
 });
 
-export type Todo = InferModel<typeof todo>;
-export const insertTodoSchema = createInsertSchema(todo);
-export const selectTodoSchema = createSelectSchema(todo);
+export type SelectTodo = InferModel<typeof todos, "select">;
+export type InsertTodo = InferModel<typeof todos, "insert">;
+export const insertTodoSchema = createInsertSchema(todos);
+export const selectTodoSchema = createSelectSchema(todos);

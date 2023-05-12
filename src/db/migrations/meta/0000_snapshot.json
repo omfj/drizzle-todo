@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "5dd38024-8196-4fe9-a04f-fd0a74827ac1",
+  "id": "070dd3b3-810a-437b-baba-6a09ed06f6c5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "cities": {
@@ -57,7 +57,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "int",
           "primaryKey": true,
           "notNull": true,
           "autoincrement": true
@@ -74,8 +74,8 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {}
     },
-    "todo": {
-      "name": "todo",
+    "todos": {
+      "name": "todos",
       "columns": {
         "id": {
           "name": "id",

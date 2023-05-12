@@ -4,13 +4,10 @@ import {
   varchar,
   mysqlEnum,
   int,
-  uniqueIndex,
 } from "drizzle-orm/mysql-core";
-
-export const countries = mysqlTable("countries", {
-  id: int("id").autoincrement().primaryKey(),
-  name: varchar("name", { length: 256 }),
-});
+import { countries } from "./countries";
+import { InferModel } from "drizzle-orm";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 export const cities = mysqlTable("cities", {
   id: serial("id").primaryKey(),
@@ -18,3 +15,7 @@ export const cities = mysqlTable("cities", {
   countryId: int("country_id").references(() => countries.id),
   popularity: mysqlEnum("popularity", ["unknown", "known", "popular"]),
 });
+
+export type City = InferModel<typeof cities>;
+export const insertTodoSchema = createInsertSchema(cities);
+export const selectTodoSchema = createSelectSchema(cities);

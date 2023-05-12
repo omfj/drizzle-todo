@@ -1,11 +1,11 @@
 import { CountryList } from "@/components/country-list";
 import { db } from "@/db/client";
-import { country } from "@/db/schema/country";
+import { countries } from "@/db/schema/countries";
 import { desc } from "drizzle-orm";
 
 export default async function CountriesPage() {
   const startTime = Date.now();
-  const countries = await db.select().from(country).orderBy(desc(country.name));
+  const rows = await db.select().from(countries).orderBy(desc(countries.name));
   const endTime = Date.now();
 
   const queryTime = ((endTime - startTime) / 1000).toFixed(3);
@@ -20,7 +20,7 @@ export default async function CountriesPage() {
 
       <hr />
 
-      <CountryList countries={countries} />
+      <CountryList countries={rows} />
     </main>
   );
 }
